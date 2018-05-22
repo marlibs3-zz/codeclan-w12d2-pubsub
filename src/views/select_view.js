@@ -6,7 +6,7 @@ const SelectView = function(element){
 
 SelectView.prototype.bindEvents = function(){
 
-  PubSub.subscribe('Animals:all-animals-ready:', (evt) => {
+  PubSub.subscribe('Animals:all-animals-ready', (evt) => {
     const allAnimals = evt.detail;
     this.populate(allAnimals);
   });

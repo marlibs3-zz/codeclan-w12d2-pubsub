@@ -17,7 +17,10 @@ const Animals = function(){
 };
 
 Animals.prototype.bindEvents = function(){
-  PubSub.publish('Animals:all-animals-ready:', this.animals);
+  PubSub.publish('Animals:all-animals-ready', this.animals);
+  PubSub.subscribe('SelectView:change', (evt) => {
+    const selectedIndex = evt.detail;
+  });
 };
 
 Animals.prototype.publishAnimalDetail = function(animalIndex){
