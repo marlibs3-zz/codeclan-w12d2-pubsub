@@ -20,12 +20,13 @@ Animals.prototype.bindEvents = function(){
   PubSub.publish('Animals:all-animals-ready', this.animals);
   PubSub.subscribe('SelectView:change', (evt) => {
     const selectedIndex = evt.detail;
+    this.publishAnimalDetail(selectedIndex);
   });
 };
 
 Animals.prototype.publishAnimalDetail = function(animalIndex){
   const selectedAnimal = this.animals[animalIndex];
-
+  PubSub.publish('Animals:selected-animal-ready', selectedAnimal);
 };
 
 module.exports = Animals;

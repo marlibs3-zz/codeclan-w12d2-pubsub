@@ -5,7 +5,10 @@ const AnimalInfoView = function(container){
 };
 
 AnimalInfoView.prototype.bindEvents = function(){
-
+  PubSub.subscribe('Animals:selected-animal-ready', (evt) => {
+    const animal = evt.detail;
+    this.render(animal);
+  })
 };
 
 AnimalInfoView.prototype.render = function(animal){
